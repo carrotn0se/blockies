@@ -12,37 +12,84 @@
   </style>
 </head>
 <body>
+  <div id="1">
+    <h1>Blockies with fixed patterns set using patternseed</h1>
+  </div>
+  <div id="2">
+    <h1>Blockies with fixed background colors set using bgcolorseed</h1>
+  </div>
+  <div id="3">
+    <h1>Blockies with fixed foreground colors set using colorseed</h1>
+  </div>
+  <div id="4">
+    <h1>Blockies with fixed spot colors set using spotcolorseed</h1>
+  </div>
+
+
   <script type="module">
     import { createIcon } from '../src/blockies.mjs';
 
-    const addresses = [
-      '0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359',
-      '0x554f8e6938004575bd89cbef417aea5c18140d92',
-      '0xcc6294200fa6e6eb5c3034ed6b0b80401f5b0ceb',
-      '0xbb9bc244d798123fde783fcc1c72d3bb8c189413',
-      '0x6090a6e47849629b7245dfa1ca21d94cd15878ef',
-      '0x314159265dd8dbb310642f98f50c066173c1259b'
-    ];
+    const seeds = []
 
-    for(let i = 0; i < 128; i++) {
-      addresses.push(
-        Math.floor(Math.random() * Math.pow(10,10)).toString(16)
-        + Math.floor(Math.random() * Math.pow(10,10)).toString(16)
-        + Math.floor(Math.random() * Math.pow(10,10)).toString(16)
-        + Math.floor(Math.random() * Math.pow(10,10)).toString(16)
-      );
+
+    for(let i = 0; i < 8; i++) {
+      const seed = (
+        Math.floor(Math.random() * Math.pow(10, 10)).toString(16) +
+        Math.floor(Math.random() * Math.pow(10, 10)).toString(16) +
+        Math.floor(Math.random() * Math.pow(10, 10)).toString(16) +
+        Math.floor(Math.random() * Math.pow(10, 10)).toString(16)
+      ).toLowerCase();
+      seeds.push(seed)
     }
 
-    for(let i = 0; i < addresses.length; i++) {
-      const seed = addresses[i].toLowerCase();
+    for(let j = 0; j < seeds.length; j++) {
+      const seed = seeds[j]
 
-      const canvas = createIcon({
+      let opts = {
         seed,
         size: 10,
-        scale: 8
-      });
+        scale: 8,
+        patternseed: "qwertyuiop"
+      }
+      const canvas = createIcon(opts);
+      document.getElementById("1").appendChild(canvas)
+    }
+    for(let j = 0; j < seeds.length; j++) {
+      const seed = seeds[j]
 
-      document.body.appendChild(canvas)
+      let opts = {
+        seed,
+        size: 10,
+        scale: 8,
+        bgcolorseed: "qwertyuiop"
+      }
+      const canvas = createIcon(opts);
+      document.getElementById("2").appendChild(canvas)
+    }
+    for(let j = 0; j < seeds.length; j++) {
+      const seed = seeds[j]
+
+      let opts = {
+        seed,
+        size: 10,
+        scale: 8,
+        colorseed: "qwertyuiop"
+      }
+      const canvas = createIcon(opts);
+      document.getElementById("3").appendChild(canvas)
+      
+    }
+    for(let j = 0; j < seeds.length; j++) {
+      const seed = seeds[j]
+
+      let opts = {
+        seed,
+        size: 10,
+        scale: 8,
+        spotcolorseed: "qwertyuiop"
+      }
+      const canvas = createIcon(opts);
+      document.getElementById("4").appendChild(canvas)
     }
   </script>
 </body>
