@@ -1,14 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <head>
   <style>
-  body {
-    background: #f1f1f1;
-  }
+    body {
+      background: #f1f1f1;
+    }
 
-  img, canvas {
-    display: inline-block;
-    margin: 10px;
-  }
+    img,
+    canvas {
+      display: inline-block;
+      margin: 10px;
+    }
   </style>
 </head>
 <body>
@@ -25,71 +26,68 @@
     <h1>Blockies with fixed spot colors set using spotcolorseed</h1>
   </div>
 
-
   <script type="module">
-    import { createIcon } from '../src/blockies.mjs';
+    import { createIcon } from "../src/blockies.mjs";
 
-    const seeds = []
+    const seeds = [];
 
-
-    for(let i = 0; i < 8; i++) {
+    for (let i = 0; i < 8; i++) {
       const seed = (
         Math.floor(Math.random() * Math.pow(10, 10)).toString(16) +
         Math.floor(Math.random() * Math.pow(10, 10)).toString(16) +
         Math.floor(Math.random() * Math.pow(10, 10)).toString(16) +
         Math.floor(Math.random() * Math.pow(10, 10)).toString(16)
       ).toLowerCase();
-      seeds.push(seed)
+      seeds.push(seed);
     }
 
-    for(let j = 0; j < seeds.length; j++) {
-      const seed = seeds[j]
+    for (let j = 0; j < seeds.length; j++) {
+      const seed = seeds[j];
 
       let opts = {
         seed,
         size: 10,
         scale: 8,
-        patternseed: "qwertyuiop"
-      }
+        patternseed: "qwertyuiop",
+      };
       const canvas = createIcon(opts);
-      document.getElementById("1").appendChild(canvas)
+      document.getElementById("1").appendChild(canvas);
     }
-    for(let j = 0; j < seeds.length; j++) {
-      const seed = seeds[j]
+    for (let j = 0; j < seeds.length; j++) {
+      const seed = seeds[j];
 
       let opts = {
         seed,
         size: 10,
         scale: 8,
-        bgcolorseed: "qwertyuiop"
-      }
+        bgcolorseed: "qwertyuiop",
+      };
       const canvas = createIcon(opts);
-      document.getElementById("2").appendChild(canvas)
+      document.getElementById("2").appendChild(canvas);
     }
-    for(let j = 0; j < seeds.length; j++) {
-      const seed = seeds[j]
+    for (let j = 0; j < seeds.length; j++) {
+      const seed = seeds[j];
 
       let opts = {
         seed,
         size: 10,
         scale: 8,
-        colorseed: "qwertyuiop"
-      }
+        colorseed: "qwertyuiop",
+      };
       const canvas = createIcon(opts);
-      document.getElementById("3").appendChild(canvas)
-      
+      document.getElementById("3").appendChild(canvas);
     }
-    for(let j = 0; j < seeds.length; j++) {
-      const seed = seeds[j]
+    for (let j = 0; j < seeds.length; j++) {
+      const seed = seeds[j];
 
       let opts = {
         seed,
         size: 10,
         scale: 8,
-        spotcolorseed: "qwertyuiop"
-      }
+        spotcolorseed: "qwertyuiop",
+      };
       const canvas = createIcon(opts);
-      document.getElementById("4").appendChild(canvas)
+      document.getElementById("4").appendChild(canvas);
     }
   </script>
 </body>
