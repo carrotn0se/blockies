@@ -86,4 +86,4 @@ Build
 License
 -------
 
-[WTFPL](http://www.wtfpl.net/)
+[MIT](https://github.com/carrotn0se/blockies/blob/master/LICENSE)

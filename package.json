@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/carrotn0se/blockies.git"
   },
-  "author": "Erin Dachtler, Alex Van de Sande, carrotn0se",
+  "author": "carrotn0se",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/carrotn0se/blockies/issues"
