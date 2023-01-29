@@ -41,7 +41,38 @@ function createColor(target) {
   return "hsl(" + h + "," + s + "," + l + ")";
 }
 
-function createImageData(size) {
+function createCumulativeArray(array) {
+  let cumProbArray = [array[0]];
+  for (let i = 1; i < array.length; i++) {
+    cumProbArray[i] = cumProbArray[i - 1] + array[i];
+  }
+  return cumProbArray;
+}
+
+function generateRandomArray(cumProbArray, N) {
+  // Generate random array
+  let randomArray = [];
+  for (let i = 0; i < N; i++) {
+    let randomNum = rand("pattern") * cumProbArray.at(-1);
+    for (let j = 0; j < cumProbArray.length; j++) {
+      if (randomNum < cumProbArray[j]) {
+        randomArray.push(j);
+        break;
+      }
+    }
+  }
+  return randomArray;
+}
+
+function createImageData(opts) {
+  const { size, bgcolorratio, colorratio, spotcolorratio } = opts;
+
+  const cumulativeProbabilityArray = createCumulativeArray([
+    bgcolorratio,
+    colorratio,
+    spotcolorratio,
+  ]);
+
   const width = size; // Only support square icons for now
   const height = size;
 
@@ -50,12 +81,8 @@ function createImageData(size) {
 
   const data = [];
   for (let y = 0; y < height; y++) {
-    let row = [];
-    for (let x = 0; x < dataWidth; x++) {
-      // this makes foreground and background color to have a 43% (1/2.3) probability
-      // spot color has 13% chance
-      row[x] = Math.floor(rand("pattern") * 2.3);
-    }
+    let row = generateRandomArray(cumulativeProbabilityArray, dataWidth);
+
     const r = row.slice(0, mirrorWidth);
     r.reverse();
     row = row.concat(r);
@@ -98,13 +125,26 @@ function buildOpts(opts) {
   newOpts.bgcolor = opts.bgcolor || createColor("bgcolor");
   newOpts.spotcolor = opts.spotcolor || createColor("spotcolor");
 
+  newOpts.colorratio =
+    opts.colorratio !== undefined && opts.colorratio !== null
+      ? opts.colorratio
+      : 30;
+  newOpts.bgcolorratio =
+    opts.bgcolorratio !== undefined && opts.bgcolorratio !== null
+      ? opts.bgcolorratio
+      : 60;
+  newOpts.spotcolorratio =
+    opts.spotcolorratio !== undefined && opts.spotcolorratio !== null
+      ? opts.spotcolorratio
+      : 10;
+
   return newOpts;
 }
 
 export function renderIcon(opts, canvas) {
   randseeds = {};
   opts = buildOpts(opts || {});
-  const imageData = createImageData(opts.size);
+  const imageData = createImageData(opts);
   const width = Math.sqrt(imageData.length);
 
   canvas.width = canvas.height = opts.size * opts.scale;
