@@ -19,14 +19,24 @@ import { createIcon } from "@carrotn0se/blockies";
 
 var icon = createIcon({
   // All options are optional
+
+  //   SEEDS
   seed: "randstring", // seed used to generate icon data, default: random
   patternseed: "randstring", // seed used to generate pattern, default: copy seed
   colorseed: "randstring", // seed used to generate color, default: copy seed
   bgcolorseed: "randstring", // seed used to generate bgcolor, default: copy seed
   spotcolorseed: "randstring", // seed used to generate spotcolor, default: copy seed
+
+  //   COLORS
   color: "#dfe", // default: random
   bgcolor: "#aaa", // default: random
   spotcolor: "#333", // default: random
+
+  // RATIOS
+  colorratio: 20, // 20% chance of a pixel being main color default: 3
+  bgcolorratio: 7, // 70% chance of a pixel being bg color default: 6
+  spotcolorratio: 1, //  10% chance of a pixel being spot color default: 10
+
   size: 15, // width/height of the icon in blocks, default: 8
   scale: 3, // width/height of each block in pixels, default: 4
 });
@@ -47,14 +57,24 @@ const canvas = createCanvas(50, 50);
 var icon = renderIcon(
   {
     // All options are optional
+
+    //   SEEDS
     seed: "randstring", // seed used to generate icon data, default: random
     patternseed: "randstring", // seed used to generate pattern, default: copy seed
     colorseed: "randstring", // seed used to generate color, default: copy seed
     bgcolorseed: "randstring", // seed used to generate bgcolor, default: copy seed
     spotcolorseed: "randstring", // seed used to generate spotcolor, default: copy seed
+
+    //   COLORS
     color: "#dfe", // default: random
     bgcolor: "#aaa", // default: random
     spotcolor: "#333", // default: random
+
+    // RATIOS
+    colorratio: 20, // 20% chance of a pixel being main color default: 3
+    bgcolorratio: 7, // 70% chance of a pixel being bg color default: 6
+    spotcolorratio: 1, //  10% chance of a pixel being spot color default: 10
+
     size: 15, // width/height of the icon in blocks, default: 8
     scale: 3, // width/height of each block in pixels, default: 4
   },
