@@ -1,24 +1,35 @@
 Blockies
 ========
 
-A tiny library for generating blocky identicons.
+An improved library for generating blockies with more options to tweak.
 
 ![Sample blockies image](examples/sample.png "Blockies")
 
-[**Demo page**](http://download13.github.io/blockies/)
+[**Demo page**](http://carrotn0se.github.io/blockies/)
+
+Installation
+---
+```console
+npm install @carrotn0se/blockies
+```
 
 Browser
 ---
 
 ```javascript
-import { createIcon } from '@download/blockies';
+import { createIcon } from '@carrotn0se/blockies';
 
 var icon = createIcon({ // All options are optional
     seed: 'randstring', // seed used to generate icon data, default: random
-    color: '#dfe', // to manually specify the icon color, default: random
-    bgcolor: '#aaa', // choose a different background color, default: white
-    size: 15, // width/height of the icon in blocks, default: 10
-    scale: 3 // width/height of each block in pixels, default: 5
+    patternseed:"randstring", // seed used to generate pattern, default: copy seed
+    colorseed:"randstring", // seed used to generate color, default: copy seed
+    bgcolorseed:"randstring", // seed used to generate bgcolor, default: copy seed
+    spotcolorseed:"randstring", // seed used to generate spotcolor, default: copy seed
+    color: '#dfe', // default: random
+    bgcolor: '#aaa', // default: random
+    spotcolor: '#333', // default: random
+    size: 15, // width/height of the icon in blocks, default: 8
+    scale: 3 // width/height of each block in pixels, default: 4
 });
 
 document.body.appendChild(icon); // icon is a canvas element
@@ -31,18 +42,22 @@ Node
 
 ```javascript
 import { createCanvas } from 'canvas'; 
-import { renderIcon } from '@download/blockies';
+import { renderIcon } from '@carrotn0se/blockies';
 
 const canvas = createCanvas(50, 50);
 
-var icon = renderIcon(
-    { // All options are optional
-        seed: 'randstring', // seed used to generate icon data, default: random
-        color: '#dfe', // to manually specify the icon color, default: random
-        bgcolor: '#aaa', // choose a different background color, default: white
-        size: 15, // width/height of the icon in blocks, default: 10
-        scale: 3 // width/height of each block in pixels, default: 5
-    },
+var icon = renderIcon({ // All options are optional
+    seed: 'randstring', // seed used to generate icon data, default: random
+    patternseed:"randstring", // seed used to generate pattern, default: copy seed
+    colorseed:"randstring", // seed used to generate color, default: copy seed
+    bgcolorseed:"randstring", // seed used to generate bgcolor, default: copy seed
+    spotcolorseed:"randstring", // seed used to generate spotcolor, default: copy seed
+    color: '#dfe', // default: random
+    bgcolor: '#aaa', // default: random
+    spotcolor: '#333', // default: random
+    size: 15, // width/height of the icon in blocks, default: 8
+    scale: 3 // width/height of each block in pixels, default: 4
+},
     canvas
 );
 ```
