@@ -33,8 +33,8 @@ var icon = createIcon({
   spotcolor: "#333", // default: random
 
   // RATIOS
-  colorratio: 20, // 20% chance of a pixel being main color default: 3
-  bgcolorratio: 7, // 70% chance of a pixel being bg color default: 6
+  colorratio: 2, // 20% chance of a pixel being main color default: 30
+  bgcolorratio: 7, // 70% chance of a pixel being bg color default: 60
   spotcolorratio: 1, //  10% chance of a pixel being spot color default: 10
 
   size: 15, // width/height of the icon in blocks, default: 8
@@ -71,8 +71,8 @@ var icon = renderIcon(
     spotcolor: "#333", // default: random
 
     // RATIOS
-    colorratio: 20, // 20% chance of a pixel being main color default: 3
-    bgcolorratio: 7, // 70% chance of a pixel being bg color default: 6
+    colorratio: 2, // 20% chance of a pixel being main color default: 30
+    bgcolorratio: 7, // 70% chance of a pixel being bg color default: 60
     spotcolorratio: 1, //  10% chance of a pixel being spot color default: 10
 
     size: 15, // width/height of the icon in blocks, default: 8
